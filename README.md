@@ -9,7 +9,7 @@ This application converts URLs linking to [Bluesky](https://bsky.app) on a web p
 - `https://bsky.app/profile/...` -> `https://tokimeki.blue/profile/...`
 - `https://bsky.app/search?...` -> `https://tokimeki.blue/search?...`
 - `https://bsky.app/hashtag/...` -> `https://tokimeki.blue/search?q=%23...`
-- `https://bsky.app/intent/compose?...` -> `https://tokimeki.blue/`shared?...
+- `https://bsky.app/intent/compose?...` -> `https://tokimeki.blue/shared?...`
 
 # installation
 
