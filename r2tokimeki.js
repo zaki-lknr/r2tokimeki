@@ -21,6 +21,28 @@ for (const link_item of link_items) {
                 link_item.href = url.replace('https://bsky.app/hashtag/', 'https://tokimeki.blue/search?q=%23');
                 break;
 
+            case "intent":
+                // 共有インテント
+                // 本家のインテントのパラメタはtextのみ。URLはテキスト末尾のスペース+https://の文字列から拾う
+                const b = /compose\?text=(.*)(?:%20|%0a|%0d|%09)(http.*)/i.exec(url);
+                let tkmk;
+                if (b) {
+                    tkmk = 'text=' + b[1].replace(/(%20|%0a|%0d|%09)*$/i, "");
+                    tkmk += '&url=' + b[2].trimEnd();
+                }
+                else {
+                    // こっちには来ないと思うけど念のため(テキストのみ・リンクのみの共有インテント)
+                    const s = url.replace(/https:\/\/bsky.app\/intent\/compose\?text=/, "");
+                    if (s.startsWith('http')) {
+                        tkmk = 'url=' + s;
+                    }
+                    else {
+                        tkmk = 'text=' + s;
+                    }
+                }
+                link_item.href = 'https://tokimeki.blue/shared?' + tkmk;
+                break;
+
             // case "messages":
             //     // DM (要らない気もする?)
             //     link_item.href = url.replace('https://bsky.app/messages', 'https://tokimeki.blue/chat');
