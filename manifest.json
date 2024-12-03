@@ -18,7 +18,7 @@
         }
     ],
     "omnibox": {
-        "keyword": "tkmk"
+        "keyword": "r2t"
     },
     "background": {
         "service_worker": "search.js"
