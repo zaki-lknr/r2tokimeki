@@ -1,4 +1,4 @@
-const target_url = "https://bsky.app";
+// const target_url = "https://bsky.app";
 
 chrome.omnibox.onInputEntered.addListener(
     function (text, disposition) {
@@ -49,10 +49,11 @@ const road2tokimeki = () => {
                     location.href = bsky_url.replace('https://bsky.app/hashtag/', 'https://tokimeki.blue/search?q=%23');
                     break;
                 case /^settings/.test(b):
-                    console.log("settings");
+                    // console.log("settings");
                     // 設定は除外
                     break;
                 default:
+                    // lists, feedsは「カラムの追加と管理」に紐づけたいけどURLがないので無理
                     console.log("url: " + bsky_url);
                     break;
             }
