@@ -23,7 +23,7 @@
         "scripting"
     ],
     "omnibox": {
-        "keyword": "r2t"
+        "keyword": "rt"
     },
     "background": {
         "service_worker": "worker.js"
