@@ -7,3 +7,11 @@ chrome.omnibox.onInputEntered.addListener(
         });
     }
 )
+
+chrome.action.onClicked.addListener((tab) => {
+    chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['actions.js']
+        // files: ['r2tokimeki.js']
+    });
+});
