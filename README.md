@@ -13,6 +13,9 @@ This application converts URLs linking to [Bluesky](https://bsky.app) on a web p
 
 # installation
 
+install from Chrome Web Store  
+<https://chromewebstore.google.com/detail/r2tokimeki/bjdpjmnfgcoicabnjeajhfpldmhnhpnl>
+
 # note
 
 this application developed by zaki.  
