@@ -32,19 +32,23 @@ const road2tokimeki = () => {
             location.href = 'https://tokimeki.blue';
         }
         else {
-            const a = /https:\/\/bsky.app\/(.*?)[\/\?]/.exec(bsky_url);
-            if (a) {
-                switch (a[1]) {
-                    case "profile":
-                        // プロフィールページ・各投稿ページ・フィード
-                    case "search":
-                        // 検索
-                        location.href = bsky_url.replace('https://bsky.app', 'https://tokimeki.blue');
-                        break;
-                }
-            }
-            else {
-                // https://bsky.app/settings など (何もしない)
+            // const a = /https:\/\/bsky.app\/(.*?)[\/\?]/.exec(bsky_url);
+            const b = bsky_url.replace('https://bsky.app/', '');
+            console.log(b);
+            switch (true) {
+                case /^profile/.test(b):
+                    // プロフィールページ・各投稿ページ・フィード
+                case /^search/.test(b):
+                    // 検索
+                    location.href = bsky_url.replace('https://bsky.app', 'https://tokimeki.blue');
+                    break;
+                case /^settings/.test(b):
+                    console.log("settings");
+                    // 設定は除外
+                    break;
+                default:
+                    console.log("url: " + bsky_url);
+                    break;
             }
         }
     }
