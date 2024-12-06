@@ -22,9 +22,9 @@ const road2tokimeki = () => {
     // console.log(target_url); // NG (letでも変わらず)
     // window.open("https://www.google.com"); // 別タブ
     const bsky_url = location.href;
-    console.log(bsky_url);
+    // console.log(bsky_url);
     if (bsky_url.startsWith('https://bsky.app')) {
-        console.log("r2tokimeki");
+        // console.log("r2tokimeki");
         //TODO もっと上位(chrome拡張レイヤー)で処理する
 
         if (bsky_url.match(/https:\/\/bsky.app\/?$/)) {
@@ -34,7 +34,7 @@ const road2tokimeki = () => {
         else {
             // const a = /https:\/\/bsky.app\/(.*?)[\/\?]/.exec(bsky_url);
             const b = bsky_url.replace('https://bsky.app/', '');
-            console.log(b);
+            // console.log(b);
             switch (true) {
                 case /^profile/.test(b):
                     // プロフィールページ・各投稿ページ・フィード
@@ -51,10 +51,9 @@ const road2tokimeki = () => {
                 case /^settings/.test(b):
                     // console.log("settings");
                     // 設定は除外
-                    break;
                 default:
                     // lists, feedsは「カラムの追加と管理」に紐づけたいけどURLがないので無理
-                    console.log("url: " + bsky_url);
+                    console.log("no link url: " + bsky_url);
                     break;
             }
         }
