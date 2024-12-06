@@ -1,3 +1,5 @@
+const target_url = "https://bsky.app";
+
 chrome.omnibox.onInputEntered.addListener(
     function (text, disposition) {
         const url = "https://tokimeki.blue/search?q=" + encodeURIComponent(text);
@@ -11,7 +13,13 @@ chrome.omnibox.onInputEntered.addListener(
 chrome.action.onClicked.addListener((tab) => {
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
-        files: ['actions.js']
-        // files: ['r2tokimeki.js']
+        func: road2tokimeki,
     });
 });
+
+const road2tokimeki = () => {
+    // console.log("road2tokimeki");
+    // console.log(target_url); // NG (letでも変わらず)
+    // window.open("https://www.google.com"); // 別タブ
+    location.href = "https://www.google.com";
+}
