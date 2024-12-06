@@ -44,6 +44,10 @@ const road2tokimeki = () => {
                     // 通知
                     location.href = bsky_url.replace('https://bsky.app', 'https://tokimeki.blue');
                     break;
+                case /^hashtag/.test(b):
+                    // ハッシュタグ：TOKIMEKIは#付きの通常検索
+                    location.href = bsky_url.replace('https://bsky.app/hashtag/', 'https://tokimeki.blue/search?q=%23');
+                    break;
                 case /^settings/.test(b):
                     console.log("settings");
                     // 設定は除外
