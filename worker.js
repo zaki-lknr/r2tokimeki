@@ -40,6 +40,8 @@ const road2tokimeki = () => {
                     // プロフィールページ・各投稿ページ・フィード
                 case /^search/.test(b):
                     // 検索
+                case /^notifications/.test(b):
+                    // 通知
                     location.href = bsky_url.replace('https://bsky.app', 'https://tokimeki.blue');
                     break;
                 case /^settings/.test(b):
