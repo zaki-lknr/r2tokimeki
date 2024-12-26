@@ -2,7 +2,14 @@
 
 chrome.omnibox.onInputEntered.addListener(
     function (text, disposition) {
-        const url = "https://tokimeki.blue/search?q=" + encodeURIComponent(text);
+        // console.log(text);
+        let url;
+        if (d = get_date_search_string(text)) {
+            url = "https://tokimeki.blue/search?q=" + encodeURIComponent("from:me " + d);
+        }
+        else {
+            url = "https://tokimeki.blue/search?q=" + encodeURIComponent(text);
+        }
 
         chrome.tabs.query({'active': true, 'lastFocusedWindow': true}, tabs => {
             chrome.tabs.update(tabs[0].id, { url: url });
@@ -60,4 +67,35 @@ const road2tokimeki = () => {
     }
 
     // location.href = "https://www.google.com";
+}
+
+const get_date_search_string = (yyyymmdd) => {
+    console.log(yyyymmdd);
+    if (r = yyyymmdd.match(/^(\d{4})(\d{2})(\d{2})$/)) {
+        const d = new Date(r[1] + '/' + r[2] + '/' + r[3]);
+        if (! isNaN(d)) {
+            d.setHours(23);
+            d.setMinutes(59);
+            d.setSeconds(59);
+            const end = "until:" + date2yyyymmdd(d);
+
+            d.setHours(0);
+            d.setMinutes(0);
+            d.setSeconds(0);
+            const start = "since:" + date2yyyymmdd(d);
+
+            return start + " " + end;
+        }
+    }
+
+    return null;
+}
+
+const date2yyyymmdd = (d) => {
+    return d.getUTCFullYear().toString().padStart(4, "0") + "-"
+        + (d.getUTCMonth()+1).toString().padStart(2, "0") + "-"
+        + d.getUTCDate().toString().padStart(2, "0") + "T"
+        + d.getUTCHours().toString().padStart(2, "0") + ":"
+        + d.getUTCMinutes().toString().padStart(2, "0") + ":"
+        + d.getUTCSeconds().toString().padStart(2, "0") + "Z"
 }
