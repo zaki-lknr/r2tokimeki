@@ -77,26 +77,25 @@ const get_date_search_string = (yyyymmdd) => {
             d.setHours(23);
             d.setMinutes(59);
             d.setSeconds(59);
-            const end = "until:" + d.getUTCFullYear().toString().padStart(4, "0") + "-"
-                + (d.getUTCMonth()+1).toString().padStart(2, "0") + "-"
-                + d.getUTCDate().toString().padStart(2, "0") + "T"
-                + d.getUTCHours().toString().padStart(2, "0") + ":"
-                + d.getUTCMinutes().toString().padStart(2, "0") + ":"
-                + d.getUTCSeconds().toString().padStart(2, "0") + "Z";
+            const end = "until:" + date2yyyymmdd(d);
 
             d.setHours(0);
             d.setMinutes(0);
             d.setSeconds(0);
-            const start = "since:" + d.getUTCFullYear().toString().padStart(4, "0") + "-"
-                + (d.getUTCMonth()+1).toString().padStart(2, "0") + "-"
-                + d.getUTCDate().toString().padStart(2, "0") + "T"
-                + d.getUTCHours().toString().padStart(2, "0") + ":"
-                + d.getUTCMinutes().toString().padStart(2, "0") + ":"
-                + d.getUTCSeconds().toString().padStart(2, "0") + "Z";
+            const start = "since:" + date2yyyymmdd(d);
 
             return start + " " + end;
         }
     }
 
     return null;
+}
+
+const date2yyyymmdd = (d) => {
+    return d.getUTCFullYear().toString().padStart(4, "0") + "-"
+        + (d.getUTCMonth()+1).toString().padStart(2, "0") + "-"
+        + d.getUTCDate().toString().padStart(2, "0") + "T"
+        + d.getUTCHours().toString().padStart(2, "0") + ":"
+        + d.getUTCMinutes().toString().padStart(2, "0") + ":"
+        + d.getUTCSeconds().toString().padStart(2, "0") + "Z"
 }
