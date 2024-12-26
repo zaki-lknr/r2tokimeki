@@ -30,6 +30,10 @@ Moves to [TOKIMEKI](https://tokimeki.blue) from the state where [Bluesky](https:
 Type `rt` in the address bar and type a space.  
 You can search by TOKIMEKI in the address bar of chrome.
 
+## search by date for own post
+
+Type `rt` search, input `YYYYmmdd` then you can search by that date.
+
 # installation
 
 install from Chrome Web Store  
